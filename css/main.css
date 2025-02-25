@@ -94,3 +94,97 @@ img {
     display: block;
     max-width: 100%;
 }
+
+html {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    min-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  overflow-x: hidden;
+  background: var(--body-bg-color);
+  color: var(--first-color);
+}
+
+.container {
+  max-width: 1250px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/*=============== HEADER ===============*/
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    backdrop-filter: blur(20px);
+    transition: .6s linear;
+}
+
+.header.sticky {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: var(--box-shadow);
+}
+
+.header .logo {
+    color: var(--first-color);
+    font-weight: 600;
+    /* font-size: 1.5rem; */
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    transition: .6s linear;
+}
+
+.nav {
+    flex: 1;
+    display: flex;
+    justify-content: center; 
+}
+
+.nav-menu {
+    display: flex;
+    gap: 50px;
+}
+
+.nav-link {
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--first-color);
+    font-size: var(--normal-font-size);
+}
+
+.nav-link.active,
+.nav-link:hover {
+    color: var(--second-color);
+}
+
+.nav-menu-btn {
+    display: none;
+    /* width: 20px;
+    height: 20px;
+    background: url(../img/burger.svg) no-repeat center;
+    cursor: pointer; */
+}
+
+/*=============== HEADER END ===============*/
+
+/*=============== HOME ===============*/
+
+/*=============== HOME END ===============*/
