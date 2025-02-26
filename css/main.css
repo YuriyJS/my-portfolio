@@ -358,6 +358,44 @@ body {
 
 /*=============== About section end ===============*/
 
+/*=============== Skills section ===============*/
+
+.skills-description {
+    max-width: 700px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.skills-description h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.skills-description p {
+    font-size: var(--normal-font-size);
+}
+
+.skills-info {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+}
+
+.education {
+    min-width: 320px;
+    width: 32%;
+}
+
+.education .label {
+    color: #fff;
+    font-weight: 400;
+    padding: 5px 15;
+    border-radius: 5px;
+    background: var(--second-color);
+}
+
 /*=============== Styles for all sections ===============*/
 
 .section {
