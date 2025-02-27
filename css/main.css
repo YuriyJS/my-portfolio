@@ -185,6 +185,50 @@ body {
 
 /*=============== Header end ===============*/
 
+/*=============== Styles for all sections ===============*/
+
+.section {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 0 20px;
+}
+
+.flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner-title {
+  font-size: 60px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  background: linear-gradient(to top, transparent 0%, var(--first-color) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: .1;
+}
+
+.inner-second-title {
+  position: relative;
+  font-size: 25px;
+  font-weight: 700;
+  transform: translateY(-55px);
+}
+
+.inner-second-title::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70px;
+  height: 5px;
+  background: var(--second-color);
+}
+
+/*=============== Styles for all sections end ===============*/
+
 /*=============== Home section ===============*/
 
 .home {
@@ -360,6 +404,10 @@ body {
 
 /*=============== Skills section ===============*/
 
+.skills .inner-content {
+    padding-bottom: 50px;
+}
+
 .skills-description {
     max-width: 700px;
     width: 100%;
@@ -380,7 +428,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 24px;
+    gap: 21px;
+    margin-bottom: 20px;
 }
 
 .education {
@@ -389,6 +438,7 @@ body {
 }
 
 .education .label {
+    display: inline-block;
     color: #fff;
     font-weight: 400;
     padding: 5px 15;
@@ -396,46 +446,134 @@ body {
     background: var(--second-color);
 }
 
-/*=============== Styles for all sections ===============*/
-
-.section {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    padding: 60px 0 20px;
+.education-list .item {
+    margin-top: 15px;
+    padding: 20px;
+    border-radius: 6px;
+    background: var(--card-bg-color);
+    box-shadow: var(--box-shadow);
+    border-bottom: 3px solid var(--second-color);
+    transition: .3s linear;
 }
 
-.flex-center {
+.education-list .year {
+    display: block;
+    font-size: var(--small-font-size);
+    font-weight: 500;
+    color: var(--third-color);
+    margin-bottom: 10px;
+}
+
+.education-list p {
+  color: var(--third-color);
+}
+
+.education .bar {
+    background-color: var(--card-bg-color);
+    box-shadow: var(--box-shadow);
+    margin-top: 15px;
+    padding: 18px;
+    border-radius: 6px;
+    transition: .3s linear;
+}
+
+.education .info {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: var(--small-font-size);
 }
 
-.inner-title {
-    font-size: 60px;
-    font-weight: 800;
-    margin-bottom: 20px;
-    background: linear-gradient(to top, transparent 0%, var(--first-color) 70%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    opacity: .1;
+.info span {
+    font-weight: 500;
 }
 
-.inner-second-title {
-    position: relative;
+.bar .line {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  background-color: #c5cadf;
+  border-radius: 5px;
+}
+
+.bar .line::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 2px;
+  background-color: var(--second-color);
+}
+
+.bar .html::before {
+  width: 95%;
+}
+
+.bar .css::before {
+  width: 85%;
+}
+
+.bar .javascript::before {
+  width: 85%;
+}
+
+.bar .jquery::before {
+  width: 75%;
+}
+
+.bar .php::before {
+  width: 75%;
+}
+.work-exp {
+    width: 100%;
+    max-width: 100%;
+}
+
+.work-exp .work-exp-title {
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.work-exp .experience-card {
+    min-width: 320px;
+    width: 32%;
+}
+
+.upper h3 {
     font-size: 25px;
     font-weight: 700;
-    transform: translateY(-55px);
 }
 
-.inner-second-title::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 70px;
-    height: 5px;
-    background: var(--second-color);
+.upper h5 {
+    font-size: var(--small-font-size);
+    font-weight: 500;
+    font-style: italic;
 }
 
-/*=============== Styles for all sections end ===============*/
+.upper span {
+    font-size: var(--normal-font-size);
+    color: var(--third-color);
+}
+
+.experience-card .hr {
+    width: 100%;
+    height: 2px;
+    background-color: var(--liner-color);
+    margin: 10px 0 22px;
+}
+
+.experience-card p {
+    margin-top: 22px;
+}
+
+.experience-card:hover,
+.education-list .item:hover,
+.education .bar:hover {
+    transform: scale(1.03);
+    transition: .3s linear;
+    cursor: pointer;
+    background-color: var(--bg-transparent-color);
+}
