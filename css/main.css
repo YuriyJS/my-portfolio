@@ -577,3 +577,38 @@ body {
     cursor: pointer;
     background-color: var(--bg-transparent-color);
 }
+/*=============== Skills section end ===============*/
+
+/*=============== Services section ===============*/
+.services-description {
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.services-list {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.services-list .service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 265px;
+    width: 100%;
+    padding: 50px;
+    border-bottom: 3px solid var(--second-color);
+    border-radius: 6px;
+    background: var(--card-bg-color);
+    box-shadow: var(--box-shadow);
+    transition: .3s linear;
+}
+
+.service-card i {
+    font-size: 48px;
+    color: var(--second-color);
+    margin-bottom: 15px;
+}
