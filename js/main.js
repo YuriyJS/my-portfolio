@@ -22,6 +22,31 @@ learnMoreBtn.forEach((btn, index) => {
 //   });
 // }
 
+//Portfolio modal active
+
+const portfolioModal = document.querySelectorAll('.potfolio-modal');
+const portfolioCard = document.querySelectorAll('.portfolio-card');
+const portfolioImgCard = document.querySelectorAll('.portfolio-img-card');
+const portfolioCloseBtn = document.querySelectorAll('.portfolio-close-btn');
+
+portfolioImgCard.forEach((btn, index) => {
+  btn.addEventListener('click', function () {
+    portfolioModal[index].classList.add('active');
+  });
+  portfolioCloseBtn[index].addEventListener('click', function () {
+    portfolioModal[index].classList.remove('active');
+  });
+});
+
+// for (let i = 0; i < portfolioCard.length; i++) {
+//   portfolioImgCard[i].addEventListener('click', function () {
+//     portfolioModal[i].classList.add('active');
+//   });
+//   portfolioCloseBtn[i].addEventListener('click', function () {
+//     portfolioModal[i].classList.remove('active');
+//   });
+// }
+
 
 
 

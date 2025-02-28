@@ -703,3 +703,121 @@ body {
 
 
 /*=============== Services section end ===============*/
+
+/*=============== Portfolio section ===============*/
+
+.portfolio-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 19px;
+}
+
+.portfolio-card {
+    min-width: 300px;
+    width: 32%;
+}
+
+.portfolio-card .portfolio-img-card {
+    position: relative;
+    max-width: 100%;
+    height: 360px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+}
+
+.portfolio-card .portfolio-img-card:hover .overlay {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.portfolio-card .overlay {
+    transition: .1s linear;
+}
+
+.portfolio-card .info {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    margin: 20px;
+    color: #fff;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: .5s linear;
+}
+
+.portfolio-card .portfolio-img-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-card:hover .info {
+  transform: translate(0);
+  opacity: 1;
+}
+
+.portfolio-img-card h3 {
+    font-size: 32px;
+}
+
+.portfolio-img-card span {
+    font-size: 22px;
+}
+
+.potfolio-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: var(--bg-transparent-color-01);
+  backdrop-filter: blur(20px);
+  visibility: hidden;
+  opacity: 0;
+  transition: .3s linear; 
+  z-index: 10;
+}
+
+.potfolio-modal.active {
+  visibility: visible;
+  opacity: 1;
+  z-index: 11;
+}
+
+.potfolio-modal-body {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  padding: 40px;
+  border-radius: 10px;
+  background: var(--card-bg-color);
+  box-shadow: var(--box-shadow);
+  transition: .5s linear;
+  transform: translateY(-50px);
+}
+
+.potfolio-modal.active .potfolio-modal-body {
+  transform: translateY(0);
+}
+
+.portfolio-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  cursor: pointer;
+}
+
+/*=============== Portfolio section end ===============*/
