@@ -13,15 +13,6 @@ learnMoreBtn.forEach((btn, index) => {
   });
 });
 
-// for (let i = 0; i < learnMoreBtn.length; i++) {
-//   learnMoreBtn[i].addEventListener('click', function () {
-//     serviceModal[i].classList.add('active');
-//   });
-//   modalCloseBtn[i].addEventListener('click', function () {
-//     serviceModal[i].classList.remove('active');
-//   });
-// }
-
 //Portfolio modal active
 
 const portfolioModal = document.querySelectorAll('.potfolio-modal');
@@ -38,15 +29,23 @@ portfolioImgCard.forEach((btn, index) => {
   });
 });
 
-// for (let i = 0; i < portfolioCard.length; i++) {
-//   portfolioImgCard[i].addEventListener('click', function () {
-//     portfolioModal[i].classList.add('active');
-//   });
-//   portfolioCloseBtn[i].addEventListener('click', function () {
-//     portfolioModal[i].classList.remove('active');
-//   });
-// }
+// Clients swiper
 
+document.addEventListener('DOMContentLoaded', function () {
+  var swiper = new Swiper(".clients-swiper", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+});
 
 
 
