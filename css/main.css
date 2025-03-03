@@ -121,6 +121,32 @@ body {
   padding: 0 15px;
 }
 
+/*=============== Scroll to top button ===============*/
+.scrollTotop {
+    position: fixed;
+    right: 0px;
+    bottom: 20px;
+    width: 45px;
+    height: 45px;
+    background: var(--second-color);
+    color: #fff;
+    font-size: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    z-index: -1;
+    box-shadow: var(--box-shadow);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s linear;
+}
+
+.scrollTotop.active {
+    z-index: 10;
+    opacity: 1;
+    visibility: visible;
+    right: 20px;
+}
+
 /*=============== Header ===============*/
 
 .header {
@@ -138,10 +164,14 @@ body {
     box-shadow: var(--box-shadow);
 }
 
-.header .logo {
+/* .header .logo {
     color: var(--first-color);
     font-weight: 600;
-    /* font-size: 1.5rem; */
+    font-size: 1.5rem;
+} */
+
+.header .logo img {
+    width: 50px;
 }
 
 .header-wrapper {
@@ -149,7 +179,11 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 18px 0;
-    transition: .6s linear;
+    transition: .4s linear;
+}
+
+.header.sticky .header-wrapper {
+    padding: 10px 0;
 }
 
 .nav {
@@ -168,6 +202,7 @@ body {
     text-transform: capitalize;
     color: var(--first-color);
     font-size: var(--normal-font-size);
+    transition: .3s linear;
 }
 
 .nav-link.active,
@@ -832,8 +867,9 @@ body {
   display: flex;
   align-items: flex-end;
   position: relative;
-  width: 90%;
-  padding: 50px;
+  width: 80%;
+  
+  padding: 50px 40px;
   border-radius: 10px;
   column-gap: 50px;
   box-shadow: var(--box-shadow);
@@ -863,11 +899,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   opacity: 0.9;
+  line-height: 1;
 }
 
 .get-in-touch-link {
   margin-top: 0;
   margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*=============== Get-in-touch Section end ===============*/
@@ -934,6 +973,115 @@ body {
 }
 
 /*=============== Our Clients Section end ===============*/
+
+/* ============= Contact Section ============== */
+
+.contact-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+.contact-left {
+  max-width: 418px;
+  width: 100%;
+}
+
+.contact-left h2 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 60px;
+}
+
+.contact-list li {
+  margin-bottom: 40px;
+}
+
+.contact-list h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.contact-list h3 i {
+  color: var(--second-color);
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+.contact-list span {
+  font-size: var(--normal-font-size);
+  margin-left: 10px;
+}
+
+.contact-list a {
+  color: var(--third-color);
+}
+
+.contact-right {
+  max-width: 536px;
+  width: 100%;
+}
+
+.contact-right p {
+  font-size: 27px;
+  color: var(--third-color);
+  margin-bottom: 40px;
+}
+
+.contact-right p span {
+  display: block;
+  font-weight: 700;
+  color: var(--first-color);
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: 2px solid transparent;
+  outline: none;
+  margin-bottom: 20px;
+  padding: 15px 40px 40px 20px;
+  border-radius: 5px;
+  background: var(--bg-transparent-color);
+  box-shadow: var(--box-shadow);
+  color: var(--third-color);
+  font-size: var(--normal-font-size);
+  transition: .1s linear;
+}
+
+.contact-form textarea {
+  width: 100%;
+  resize: none;
+}
+
+.first-row input {
+  width: 100%;
+}
+
+.second-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.second-row input {
+  width: 48%;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: var(--third-color);
+  box-shadow: 0 0 5px var(--third-color)
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #614fd0;
+  box-shadow: 0 0 5px #614fd0;
+}
+
+/* ============= End Contact Section ============== */
 
 /*=============== Footer Section ===============*/
 
