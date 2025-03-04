@@ -1,4 +1,4 @@
-// Header effect scroll
+// --Header effect scroll--
 
 const header = document.querySelector('.header');
 
@@ -54,7 +54,7 @@ window.addEventListener('scroll', function () {
   }
 });
 
-// Scroll to top button
+// --Scroll to top button--
 
 const scrollTotop = document.querySelector('.scrollTotop');
 
@@ -81,18 +81,7 @@ scrollTotop.addEventListener('click', function () {
   });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-// Services modal active
+// --Services modal active--
 
 const serviceModal = document.querySelectorAll('.service-modal');
 const learnMoreBtn = document.querySelectorAll('.learn-more-btn');
@@ -107,7 +96,7 @@ learnMoreBtn.forEach((btn, index) => {
   });
 });
 
-//Portfolio modal active
+// --Portfolio modal active--
 
 const portfolioModal = document.querySelectorAll('.potfolio-modal');
 const portfolioCard = document.querySelectorAll('.portfolio-card');
@@ -123,7 +112,7 @@ portfolioImgCard.forEach((btn, index) => {
   });
 });
 
-// Clients swiper
+// --Clients swiper--
 
 document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper(".clients-swiper", {
@@ -141,7 +130,69 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// --Light / dark theme button--
 
+// const themeBtn = document.querySelector('.theme-btn');
+
+// const getCurrentTheme = () => document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+
+// const getCurrentIcon = () => themeBtn.classList.contains('sun') ? 'sun' : 'moon';
+
+// themeBtn.addEventListener('click', function () {
+//   document.body.classList.toggle('dark-theme');
+//   themeBtn.classList.toggle('sun');
+
+//   localStorage.setItem('saved-theme', getCurrentTheme());
+//   localStorage.setItem('saved-icon', getCurrentIcon());
+// });
+
+// const savedTheme = localStorage.getItem('saved-theme');
+// const savedIcon = localStorage.getItem('saved-icon');
+
+// // Check If there is a theme override in localStorage
+// if (savedTheme) {
+//   document.body.classList[savedTheme === 'dark' ? 'add' : 'remove']('dark-theme');
+//   themeBtn.classList[savedIcon === 'sun' ? 'add' : 'remove']('sun');
+// } else {}
+
+// --Light / dark theme button--
+
+const themeBtn = document.querySelector('.theme-btn');
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  themeBtn.classList.toggle('sun');
+
+  localStorage.setItem('saved-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+  localStorage.setItem('saved-icon', themeBtn.classList.contains('sun') ? 'sun' : 'moon');
+});
+
+const savedTheme = localStorage.getItem('saved-theme');
+if (savedTheme) {
+  document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+  themeBtn.classList.toggle('sun', savedTheme === 'dark');
+}
+
+// Responsive nav menu toggle
+
+const navBtn = document.querySelector('.nav-menu-btn');
+const navBar = document.querySelector('.nav');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+
+navBtn.addEventListener('click', () => {
+  navBtn.classList.toggle('close');
+  navBar.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navBtn.classList.remove('close');
+    navBar.classList.remove('active');
+    navMenu.classList.remove('active');
+  });
+});
 
 
 
