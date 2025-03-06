@@ -194,6 +194,28 @@ navLinks.forEach(link => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('section').forEach((section) => {
+    section.style.opacity = '1';
+  });
+
+  ScrollReveal(
+    {
+      reset: true,
+      distance: '60px',
+      duration: 2500,
+      delay: 100
+    }
+  );
+
+  ScrollReveal().reveal('.inner-title, .inner-second-title', { scale: 1, delay: 400 });
+  ScrollReveal().reveal('.home-info h1, .about-img', { delay: 400, origin: "left" });
+  ScrollReveal().reveal('.home-info h3, .home-info p, .home-info-link', { delay: 500, origin: 'left' });
+  ScrollReveal().reveal('.media-icons a, .professional-list, .inner-info-link', { delay: 500, origin: 'bottom', interval: 100 });
+  ScrollReveal().reveal('.home-img, .description', { delay: 500, origin: 'right' });
+});
+
+
 
 
 
