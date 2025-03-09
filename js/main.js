@@ -1,3 +1,5 @@
+
+
 // --Header effect scroll--
 
 const header = document.querySelector('.header');
@@ -54,6 +56,41 @@ window.addEventListener('scroll', function () {
   }
 });
 
+// --Light / dark theme button--
+const themeBtn = document.querySelector('.theme-btn');
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  themeBtn.classList.toggle('sun');
+
+  localStorage.setItem('saved-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+  localStorage.setItem('saved-icon', themeBtn.classList.contains('sun') ? 'sun' : 'moon');
+});
+
+const savedTheme = localStorage.getItem('saved-theme');
+if (savedTheme) {
+  document.body.classList.toggle('dark-theme', savedTheme === 'dark');
+  themeBtn.classList.toggle('sun', savedTheme === 'dark');
+}
+
+// Первая функция: скрывает кнопку
+function hideThemeBtn() {
+  if (themeBtn) {
+    themeBtn.style.display = 'none';
+  } else {
+    console.warn('Кнопка не существует.');
+  }
+}
+
+// Вторая функция: показывает кнопку
+function showThemeBtn() {
+  if (themeBtn) {
+    themeBtn.style.display = 'flex';
+  } else {
+    console.warn('Кнопка не существует.');
+  }
+}
+
 // --Scroll to top button--
 
 const scrollTotop = document.querySelector('.scrollTotop');
@@ -81,34 +118,148 @@ scrollTotop.addEventListener('click', function () {
   });
 });
 
-// --Services modal active--
+// Responsive nav menu toggle
 
-const serviceModal = document.querySelectorAll('.service-modal');
-const learnMoreBtn = document.querySelectorAll('.learn-more-btn');
-const modalCloseBtn = document.querySelectorAll('.modal-close-btn');
+const navBtn = document.querySelector('.nav-menu-btn');
+const navBar = document.querySelector('.nav');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
 
-learnMoreBtn.forEach((btn, index) => {
-  btn.addEventListener('click', function () {
-    serviceModal[index].classList.add('active');
-  });
-  modalCloseBtn[index].addEventListener('click', function () {
-    serviceModal[index].classList.remove('active');
+navBtn.addEventListener('click', () => {
+  navBtn.classList.toggle('close');
+  navBar.classList.toggle('active');
+  navMenu.classList.toggle('active');
+});
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navBtn.classList.remove('close');
+    navBar.classList.remove('active');
+    navMenu.classList.remove('active');
   });
 });
 
-// --Portfolio modal active--
+// --ScrollReveal--
+// Следи за тем, где закачивается DOMContentLoaded
 
-const portfolioModal = document.querySelectorAll('.potfolio-modal');
-const portfolioCard = document.querySelectorAll('.portfolio-card');
-const portfolioImgCard = document.querySelectorAll('.portfolio-img-card');
-const portfolioCloseBtn = document.querySelectorAll('.portfolio-close-btn');
+document.addEventListener('DOMContentLoaded', function () {
+  
 
-portfolioImgCard.forEach((btn, index) => {
-  btn.addEventListener('click', function () {
-    portfolioModal[index].classList.add('active');
+  const revealConfigurations = [
+    {
+      selector: '.inner-title, .inner-second-title',
+      config: { scale: 1, delay: 400 }
+    },
+    {
+      selector: '.home-info h1, .about-img',
+      config: { delay: 400, origin: 'left' }
+    },
+    {
+      selector: '.home-info h3, .home-info p, .home-info-link',
+      config: { delay: 500, origin: 'left' }
+    },
+    {
+      selector: '.media-icons a, .professional-list, .education-all, .work-exp, .services-list',
+      config: { delay: 600, origin: 'bottom', interval: 200 }
+    },
+    {
+      selector: '.home-img, .description, .services-description',
+      config: { delay: 500, origin: 'right' }
+    },
+    {
+      selector: '.skills-description, .inner-info-link',
+      config: { delay: 500, scale: 0.5 }
+    },
+    {
+      selector: '.services-container, .portfolio-img-card',
+      config: { delay: 600, origin: 'top', interval: 200 }
+    }
+  ];
+
+  function initScrollReveal() {
+    window.sr = ScrollReveal({
+      reset: true,
+      distance: '60px',
+      duration: 2500,
+      delay: 100
+    });
+
+    revealConfigurations.forEach(({ selector, config }) => {
+      sr.reveal(selector, config);
+    });
+  }
+
+  initScrollReveal();
+  
+  // Функция отключения ScrollReveal
+  function disableScrollReveal() {
+    sr.clean(); // Очистка всех элементов от анимаций
+    document.documentElement.style.overflowY = "hidden"; // Установка overflow hidden на html
+    document.body.style.overflowY = "hidden"; // Установка overflow hidden на body
+
+
+    revealConfigurations.forEach(({ selector }) => {
+      document.querySelectorAll(selector).forEach(el => {
+        el.style.transform = "";
+        el.style.opacity = "";
+        el.style.transition = "";
+        el.style.visibility = "";
+      });
+    });
+
+    console.log("function off");
+  }
+
+  // Функция повторной инициализации ScrollReveal
+  function enableScrollReveal() {
+    document.documentElement.style.overflowY = ""; // Возврат overflow на html
+    document.body.style.overflowY = ""; // Возврат overflow на body
+    initScrollReveal(); // Вызов функции инициализации
+    console.log("function on");
+  }
+
+  // --Services modal active--
+  const serviceModal = document.querySelectorAll('.service-modal');
+  const learnMoreBtn = document.querySelectorAll('.learn-more-btn');
+  const modalCloseBtn = document.querySelectorAll('.modal-close-btn');
+
+  const modal = function (modalClick) {
+    serviceModal[modalClick].classList.add("active");
+    disableScrollReveal();
+  }
+
+  learnMoreBtn.forEach((button, i) => {
+    button.addEventListener("click", function () {
+      modal(i);
+      hideThemeBtn();
+    });
   });
-  portfolioCloseBtn[index].addEventListener('click', function () {
-    portfolioModal[index].classList.remove('active');
+
+  modalCloseBtn.forEach(button => {
+    button.addEventListener("click", () => {
+      serviceModal.forEach(modal => {
+        modal.classList.remove("active");
+      });
+      enableScrollReveal();
+      showThemeBtn();
+    });
+  });
+
+  const portfolioModal = document.querySelectorAll('.portfolio-modal');
+  const portfolioImgCard = document.querySelectorAll('.portfolio-img-card');
+  const portfolioCloseBtn = document.querySelectorAll('.portfolio-close-btn');
+  
+  portfolioImgCard.forEach((btn, index) => {
+    btn.addEventListener('click', function () {
+      portfolioModal[index].classList.add('active');
+      disableScrollReveal();
+    });
+  
+    portfolioCloseBtn[index].addEventListener('click', function () {
+      portfolioModal[index].classList.remove('active');
+      enableScrollReveal();
+    });
+    
   });
 });
 
@@ -157,63 +308,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // --Light / dark theme button--
 
-const themeBtn = document.querySelector('.theme-btn');
 
-themeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-theme');
-  themeBtn.classList.toggle('sun');
 
-  localStorage.setItem('saved-theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
-  localStorage.setItem('saved-icon', themeBtn.classList.contains('sun') ? 'sun' : 'moon');
-});
 
-const savedTheme = localStorage.getItem('saved-theme');
-if (savedTheme) {
-  document.body.classList.toggle('dark-theme', savedTheme === 'dark');
-  themeBtn.classList.toggle('sun', savedTheme === 'dark');
-}
 
-// Responsive nav menu toggle
 
-const navBtn = document.querySelector('.nav-menu-btn');
-const navBar = document.querySelector('.nav');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
-
-navBtn.addEventListener('click', () => {
-  navBtn.classList.toggle('close');
-  navBar.classList.toggle('active');
-  navMenu.classList.toggle('active');
-});
-
-navLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    navBtn.classList.remove('close');
-    navBar.classList.remove('active');
-    navMenu.classList.remove('active');
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('section').forEach((section) => {
-    section.style.opacity = '1';
-  });
-
-  ScrollReveal(
-    {
-      reset: true,
-      distance: '60px',
-      duration: 2500,
-      delay: 100
-    }
-  );
-
-  ScrollReveal().reveal('.inner-title, .inner-second-title', { scale: 1, delay: 400 });
-  ScrollReveal().reveal('.home-info h1, .about-img', { delay: 400, origin: "left" });
-  ScrollReveal().reveal('.home-info h3, .home-info p, .home-info-link', { delay: 500, origin: 'left' });
-  ScrollReveal().reveal('.media-icons a, .professional-list, .inner-info-link', { delay: 500, origin: 'bottom', interval: 100 });
-  ScrollReveal().reveal('.home-img, .description', { delay: 500, origin: 'right' });
-});
 
 
 

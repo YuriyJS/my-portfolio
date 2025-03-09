@@ -110,12 +110,16 @@ body {
   flex-direction: column;
   min-width: 100%;
   overflow-x: hidden;
+  
   background: var(--body-bg-color);
   color: var(--first-color);
 }
 
+
+
 main {
-    flex-grow: 1;
+    flex: 1;
+    /* overflow-y: auto; */
 }
 
 .container {
@@ -123,6 +127,7 @@ main {
   width: 100%;
   margin: 0 auto;
   padding: 0 15px;
+  overflow: hidden;
 }
 
 /*=============== Scroll to top button ===============*/
@@ -354,6 +359,7 @@ main {
     font-size: var(--normal-font-size);
     font-weight: 500;
     display: inline-block;
+    white-space: nowrap;
     margin: 20px 0;
     padding: 20px 50px;
     letter-spacing: 1px;
@@ -362,6 +368,11 @@ main {
 
 .inner-info-link:hover {
     background: var(--hover-color);
+}
+
+.inner-info-link i {
+  margin-left: 8px;
+  /* Настройте значение по вкусу */
 }
 
 .home-img img {
@@ -510,7 +521,7 @@ main {
     display: inline-block;
     color: #fff;
     font-weight: 400;
-    padding: 5px 15;
+    padding: 5px 15px;
     border-radius: 5px;
     background: var(--second-color);
 }
@@ -649,6 +660,11 @@ main {
 /*=============== Skills section end ===============*/
 
 /*=============== Services section ===============*/
+.services-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .services-description {
     font-size: 30px;
     margin-bottom: 50px;
@@ -717,12 +733,13 @@ main {
     background: var(--bg-transparent-color);
     visibility: hidden;
     opacity: 0;
-    transition: .3s linear;
+    
 }
 
 .service-modal.active {
     visibility: visible;
     opacity: 1;
+    transition: .3s linear;
 }
 
 .service-modal-body {
@@ -841,7 +858,7 @@ main {
     font-size: 22px;
 }
 
-.potfolio-modal {
+.portfolio-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -853,19 +870,19 @@ main {
   padding: 20px;
   background: var(--bg-transparent-color-01);
   backdrop-filter: blur(20px);
+  transition: .5s linear; 
   visibility: hidden;
   opacity: 0;
-  transition: .3s linear; 
   z-index: 10;
 }
 
-.potfolio-modal.active {
+.portfolio-modal.active {
   visibility: visible;
   opacity: 1;
   z-index: 11;
 }
 
-.potfolio-modal-body {
+.portfolio-modal-body {
   position: relative;
   max-width: 600px;
   width: 100%;
@@ -877,17 +894,15 @@ main {
   transform: translateY(-50px);
 }
 
-.potfolio-modal.active .potfolio-modal-body {
-  transform: translateY(0);
-}
-
 .portfolio-close-btn {
   position: absolute;
   top: 0;
   right: 0;
   margin: 20px;
   cursor: pointer;
+  z-index: 2;
 }
+
 
 /*=============== Portfolio section end ===============*/
 
@@ -901,8 +916,10 @@ main {
   display: flex;
   align-items: flex-end;
   position: relative;
-  width: 80%;
-  
+  width: 70%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* margin: 0 auto; */
   padding: 50px 40px;
   border-radius: 10px;
   column-gap: 50px;
@@ -937,10 +954,8 @@ main {
 }
 
 .get-in-touch-link {
-  margin-top: 0;
-  margin-bottom: 40px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 /*=============== Get-in-touch Section end ===============*/
@@ -1230,6 +1245,12 @@ main {
     flex-wrap: wrap;
   }
 
+  .services-description,
+  .work-exp-title {
+    font-size: 25px;
+    text-align: center;
+  }
+
 }
 
 
@@ -1306,6 +1327,11 @@ main {
     text-align: center;
   }
 
+  .get-in-touch .contact-card {
+    /* width: 100%; */
+    padding: 25px;
+  }
+
 }
 
 /* --Media Queries max-width: 450px-- */
@@ -1338,17 +1364,30 @@ main {
   .follow-group ul {
     gap: 15px;
   }
+
+  .education {
+    min-width: 295px;
+  }
+
+  .work-exp,
+  .experience-card {
+    min-width: 295px;
+  }
+
+  .work-exp .work-exp-title {
+    margin-bottom: 20px;
+  }
+
+  .service-modal-body,
+  .portfolio-modal-body {
+    padding: 40px 15px 15px;
+    margin: 15px 15px;
+  }
+
+  .service-modal-body h3,
+  .portfolio-modal-body h3 {
+    font-size: 25px;
+  }
 }
 
-/* Сделано для ScrollReveal */
-.home,
-.about,
-.skills,
-.services,
-.portfolio,
-.contact {
-  /* Скрыть все секции */
-  opacity: 0;
-  /* Плавный переход */
-  transition: opacity 0.5s ease;
-}
+
