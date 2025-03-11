@@ -151,27 +151,27 @@ document.addEventListener('DOMContentLoaded', function () {
       config: { scale: 1, delay: 400 }
     },
     {
+      selector: '.skills-description, .inner-info-link, .contact-card .title',
+      config: { delay: 500, scale: 0.5 }
+    },
+    {
       selector: '.home-info h1, .about-img',
       config: { delay: 400, origin: 'left' }
     },
     {
       selector: '.home-info h3, .home-info p, .home-info-link',
-      config: { delay: 500, origin: 'left' }
+      config: { delay: 600, origin: 'left' }
+    },
+    {
+      selector: '.home-img, .description, .services-description',
+      config: { delay: 600, origin: 'right' }
     },
     {
       selector: '.media-icons a, .professional-list, .education-all, .work-exp, .services-list',
       config: { delay: 600, origin: 'bottom', interval: 200 }
     },
     {
-      selector: '.home-img, .description, .services-description',
-      config: { delay: 500, origin: 'right' }
-    },
-    {
-      selector: '.skills-description, .inner-info-link',
-      config: { delay: 500, scale: 0.5 }
-    },
-    {
-      selector: '.services-container, .portfolio-img-card',
+      selector: '.services-container, .portfolio-img-card, .contact-list, .contact-left, .contact-right p, .first-row, .second-row, .third-row',
       config: { delay: 600, origin: 'top', interval: 200 }
     }
   ];
