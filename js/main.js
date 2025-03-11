@@ -1,5 +1,3 @@
-
-
 // --Header effect scroll--
 
 const header = document.querySelector('.header');
@@ -7,26 +5,6 @@ const header = document.querySelector('.header');
 window.addEventListener('scroll', function () {
   header.classList.toggle('sticky', window.scrollY > 1);
 });
-
-// Nav Menu items active
-
-// window.addEventListener('scroll', function () {
-//   const sections = this.document.querySelectorAll('section');
-//   const scrollY = this.window.scrollY;
-
-//   sections.forEach(current => {
-//     let sectionHeight = current.offsetHeight;
-//     let sectionTop = current.offsetTop - 50;
-//     let sectionId = current.getAttribute('id');
-
-//     if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-//       document.querySelector(`.nav-menu a[href*="${sectionId}"]`).classList.add('active');
-//     } else {
-//       document.querySelector(`.nav-menu a[href*="${sectionId}"]`).classList.remove('active');
-//     }
-//   });
-// });
-  
 
 let isScrolling = false;
 
@@ -73,7 +51,7 @@ if (savedTheme) {
   themeBtn.classList.toggle('sun', savedTheme === 'dark');
 }
 
-// Первая функция: скрывает кнопку
+// First function: hides the button
 function hideThemeBtn() {
   if (themeBtn) {
     themeBtn.style.display = 'none';
@@ -82,7 +60,7 @@ function hideThemeBtn() {
   }
 }
 
-// Вторая функция: показывает кнопку
+// Second function: shows the button
 function showThemeBtn() {
   if (themeBtn) {
     themeBtn.style.display = 'flex';
@@ -94,17 +72,6 @@ function showThemeBtn() {
 // --Scroll to top button--
 
 const scrollTotop = document.querySelector('.scrollTotop');
-
-
-// window.addEventListener('scroll', function () {
-//   if(window.scrollY > 500) {
-//     scrollTotop.classList.add('active');
-//   } else {
-//     scrollTotop.classList.remove('active');
-//   }
-// });
-
-//Сокращенный вариант c toggle
 
 window.addEventListener('scroll', function () {
   scrollTotop.classList.toggle('active', window.scrollY > 500);
@@ -140,7 +107,7 @@ navLinks.forEach(link => {
 });
 
 // --ScrollReveal--
-// Следи за тем, где закачивается DOMContentLoaded
+// DOMContentLoaded 
 
 document.addEventListener('DOMContentLoaded', function () {
   
@@ -191,11 +158,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   initScrollReveal();
   
-  // Функция отключения ScrollReveal
+  // ScrollReveal Disable Function
   function disableScrollReveal() {
-    sr.clean(); // Очистка всех элементов от анимаций
-    document.documentElement.style.overflowY = "hidden"; // Установка overflow hidden на html
-    document.body.style.overflowY = "hidden"; // Установка overflow hidden на body
+    sr.clean(); // Clear all elements from animations
+    document.documentElement.style.overflowY = "hidden"; // Setting overflow hidden on html
+    document.body.style.overflowY = "hidden"; // Setting overflow hidden on body
 
 
     revealConfigurations.forEach(({ selector }) => {
@@ -210,11 +177,11 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("function off");
   }
 
-  // Функция повторной инициализации ScrollReveal
+  // ScrollReveal Reinitialization Function
   function enableScrollReveal() {
-    document.documentElement.style.overflowY = ""; // Возврат overflow на html
-    document.body.style.overflowY = ""; // Возврат overflow на body
-    initScrollReveal(); // Вызов функции инициализации
+    document.documentElement.style.overflowY = ""; // Return overflow to html
+    document.body.style.overflowY = ""; // Return overflow to body
+    initScrollReveal(); // Calling the initialization function
     console.log("function on");
   }
 
@@ -281,32 +248,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// --Light / dark theme button--
 
-// const themeBtn = document.querySelector('.theme-btn');
-
-// const getCurrentTheme = () => document.body.classList.contains('dark-theme') ? 'dark' : 'light';
-
-// const getCurrentIcon = () => themeBtn.classList.contains('sun') ? 'sun' : 'moon';
-
-// themeBtn.addEventListener('click', function () {
-//   document.body.classList.toggle('dark-theme');
-//   themeBtn.classList.toggle('sun');
-
-//   localStorage.setItem('saved-theme', getCurrentTheme());
-//   localStorage.setItem('saved-icon', getCurrentIcon());
-// });
-
-// const savedTheme = localStorage.getItem('saved-theme');
-// const savedIcon = localStorage.getItem('saved-icon');
-
-// // Check If there is a theme override in localStorage
-// if (savedTheme) {
-//   document.body.classList[savedTheme === 'dark' ? 'add' : 'remove']('dark-theme');
-//   themeBtn.classList[savedIcon === 'sun' ? 'add' : 'remove']('sun');
-// } else {}
-
-// --Light / dark theme button--
 
 
 
